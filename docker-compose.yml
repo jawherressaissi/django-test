@@ -11,7 +11,7 @@ services:
       - 8000:8000
     depends_on:
       - redis
-      - mysql
+      - mysqldb
     environment:
       - REDIS_HOST=redis
       - REDIS_PORT=6379
@@ -31,16 +31,16 @@ services:
     ports:
       - 6379:6379
 
-  mysql:
+  mysqldb:
     image: mysql:latest
     restart: unless-stopped
     ports:
       - 3306:3306
     environment:
-      - MYSQL_ROOT_PASSWORD=whatever..
+      - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=ereputation
       - MYSQL_USER=root
-      - MYSQL_PASSWORD=whatever..
+      - MYSQL_PASSWORD=root
     volumes:
       - /tmp/app/mysqld:/var/run/mysqld
       - ./db:/var/lib/mysql

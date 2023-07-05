@@ -79,8 +79,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'ereputation',
         'USER': 'root',
-        'PASSWORD': 'whatever..',
-        'HOST': 'mysql',
+        'PASSWORD': 'root',
+        'HOST': 'localhost',
         'PORT': '3306',
     }
 }
