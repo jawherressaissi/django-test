@@ -23,7 +23,7 @@ services:
     restart: always
     build:
       context: .
-    command: celery -A web worker -l info
+    command: celery -A testapp worker -l info
     depends_on:
       - mysqldb
       - redis
