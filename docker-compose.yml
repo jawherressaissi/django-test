@@ -34,7 +34,6 @@ services:
     environment:
       - REDIS_HOST=redis
       - REDIS_PORT=6379
-      - DB_HOST=mysqldb
       - DB_NAME=ereputation
       - DB_USER=root
       - DB_PASSWORD=root
