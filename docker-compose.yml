@@ -4,7 +4,6 @@ services:
   mysqldb:
     image: mysql:latest
     restart: unless-stopped
-    command: sleep 15
     ports:
       - 3306:3306
     environment:
@@ -26,7 +25,7 @@ services:
       context: .
       dockerfile: Dockerfile
     restart: on-failure
-    command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    command: bash -c "sleep 10 && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
     ports:
       - 8000:8000
     depends_on:
@@ -36,6 +35,7 @@ services:
       - REDIS_HOST=redis
       - REDIS_PORT=6379
       - DB_NAME=ereputation
+      - DB_HOST=mysqldb
       - DB_USER=root
       - DB_PASSWORD=root
       - DB_PORT=3306
