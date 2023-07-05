@@ -9,7 +9,6 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=ereputation
-      - MYSQL_USER=root
       - MYSQL_PASSWORD=root
     volumes:
       - /tmp/app/mysqld:/var/run/mysqld
@@ -36,7 +35,6 @@ services:
       - REDIS_PORT=6379
       - DB_NAME=ereputation
       - DB_HOST=mysqldb
-      - DB_USER=root
       - DB_PASSWORD=root
       - DB_PORT=3306
     volumes:
