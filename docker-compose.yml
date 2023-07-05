@@ -42,4 +42,5 @@ services:
       - MYSQL_USER=root
       - MYSQL_PASSWORD=whatever..
     volumes:
-      - db:/var/lib/mysql
+      - /tmp/app/mysqld:/var/run/mysqld
+      - ./db:/var/lib/mysql
