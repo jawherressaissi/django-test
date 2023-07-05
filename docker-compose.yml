@@ -19,24 +19,12 @@ services:
     ports:
       - 6379:6379
 
-  celery:
-    restart: always
-    build:
-      context: .
-    command: celery -A testapp worker -l info
-    depends_on:
-      - mysqldb
-      - redis
-      - web
-    volumes:
-      - .:/app
-
   web:
     build: 
       context: .
       dockerfile: Dockerfile
     restart: on-failure
-    command: bash -c "sleep 5 && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    command: bash -c "sleep 5 && python manage.py migrate && nohup python manage.py runserver 0.0.0.0:8000 && celery -A testapp worker -l info"
     ports:
       - 8000:8000
     depends_on:
