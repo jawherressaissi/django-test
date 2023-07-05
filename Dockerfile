@@ -15,4 +15,7 @@ RUN pip install -r requirements.txt
 COPY . .
 
 # Run Django migrations
-RUN python manage.py migrate
+#RUN python manage.py migrate
+
+# Start the Django development server and Celery worker
+#CMD ["bash", "-c", "python manage.py runserver 0.0.0.0:8000"]
