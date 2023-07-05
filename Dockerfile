@@ -20,6 +20,7 @@ ENV CELERY_RESULT_BACKEND redis://redis:6379/0
 
 # Run Django migrations
 #RUN python manage.py migrate
+RUN celery -A testapp worker -l info --without-gossip --pool=solo
 
 # Start the Django development server and Celery worker
 #CMD ["bash", "-c", "python manage.py runserver 0.0.0.0:8000"]
