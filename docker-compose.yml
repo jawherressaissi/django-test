@@ -24,7 +24,7 @@ services:
       context: .
       dockerfile: Dockerfile
     restart: on-failure
-    command: bash -c "sleep 15 && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    command: bash -c "sleep 5 && python manage.py migrate && python manage.py runserver 0.0.0.0:8000 && celery -A ced worker -l info --without-gossip --pool=solo"
     ports:
       - 8000:8000
     depends_on:
