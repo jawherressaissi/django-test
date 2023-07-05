@@ -36,7 +36,7 @@ services:
       context: .
       dockerfile: Dockerfile
     restart: on-failure
-    command: bash -c "sleep 5 && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    command: bash -c "sleep 10 && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
     ports:
       - 8000:8000
     depends_on:
