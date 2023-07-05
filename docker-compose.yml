@@ -31,6 +31,29 @@ services:
     volumes:
       - .:/app
 
+  celery_beat:
+    restart: on-failure
+    build:
+      context: .
+    command: celery -A testapp beat -l info
+    volumes:
+      - .:/app
+    depends_on:
+      - redis
+      - mysqldb
+      - web
+
+  celery_flower:
+    restart: on-failure
+    build:
+      context: .
+    command: celery flower
+    volumes:
+      - .:/app
+    depends_on:
+      - celery
+
+
   web:
     build: 
       context: .
