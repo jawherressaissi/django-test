@@ -43,17 +43,6 @@ services:
       - mysqldb
       - web
 
-  celery_flower:
-    restart: on-failure
-    build:
-      context: .
-    command: celery flower
-    volumes:
-      - .:/app
-    depends_on:
-      - celery
-
-
   web:
     build: 
       context: .
